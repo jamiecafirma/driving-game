@@ -9,7 +9,7 @@ var data = {
 
 var $car = document.querySelector('.car');
 
-function turnCar(event) {
+function moveCar(event) {
   if (event.key === 'ArrowDown') {
     $car.className = 'car south';
     data.direction = 'south';
@@ -22,6 +22,8 @@ function turnCar(event) {
   } else if (event.key === 'ArrowLeft') {
     $car.className = 'car west';
     data.direction = 'west';
+  } else if (event.key === ' ') {
+    data.currentInterval = setInterval(moveCarForward, 16);
   }
 }
 
@@ -30,12 +32,4 @@ function moveCarForward() {
   $car.style.left = data.location.x + 'px';
 }
 
-function startCar(event) {
-  if (event.key === ' ') {
-    data.currentInterval = setInterval(moveCarForward, 16);
-  }
-}
-
-document.addEventListener('keydown', turnCar);
-
-document.addEventListener('keydown', startCar);
+document.addEventListener('keydown', moveCar);
