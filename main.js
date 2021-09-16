@@ -4,7 +4,8 @@ var data = {
     x: 0,
     y: 0
   },
-  currentInterval: 0
+  currentInterval: 0,
+  hasStarted: false
 };
 
 var $car = document.querySelector('.car');
@@ -23,7 +24,13 @@ function moveCar(event) {
     $car.className = 'car west';
     data.direction = 'west';
   } else if (event.key === ' ') {
-    data.currentInterval = setInterval(moveCarForward, 16);
+    if (data.hasStarted === false) {
+      data.currentInterval = setInterval(moveCarForward, 16);
+      data.hasStarted = true;
+    } else {
+      clearInterval(data.currentInterval);
+      data.hasStarted = false;
+    }
   }
 }
 
