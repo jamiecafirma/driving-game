@@ -5,7 +5,6 @@ var data = {
 var $car = document.querySelector('.car');
 
 function turnCar(event) {
-  console.log(event.key);
   if (event.key === 'ArrowDown') {
     $car.className = 'car south';
     data.carDirection = 'south';
@@ -19,7 +18,6 @@ function turnCar(event) {
     $car.className = 'car west';
     data.carDirection = 'west';
   }
-  console.log(data.carDirection);
 }
 
 document.addEventListener('keydown', turnCar);
