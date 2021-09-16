@@ -35,8 +35,19 @@ function moveCar(event) {
 }
 
 function moveCarForward() {
-  data.location.x += 8;
-  $car.style.left = data.location.x + 'px';
+  if (data.direction === 'east') {
+    data.location.x += 8;
+    $car.style.left = data.location.x + 'px';
+  } else if (data.direction === 'west') {
+    data.location.x -= 8;
+    $car.style.left = data.location.x + 'px';
+  } else if (data.direction === 'north') {
+    data.location.y -= 8;
+    $car.style.top = data.location.y + 'px';
+  } else if (data.direction === 'south') {
+    data.location.y += 8;
+    $car.style.top = data.location.y + 'px';
+  }
 }
 
 document.addEventListener('keydown', moveCar);
