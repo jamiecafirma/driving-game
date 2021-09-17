@@ -5,7 +5,8 @@ var data = {
     y: 0
   },
   currentInterval: 0,
-  hasStarted: false
+  hasStarted: false,
+  speed: 8
 };
 
 var $car = document.querySelector('.car');
@@ -31,21 +32,33 @@ function moveCar(event) {
       clearInterval(data.currentInterval);
       data.hasStarted = false;
     }
+  } else if (event.key === 'a') {
+    if (data.speed < 20) {
+      data.speed = 20;
+    } else {
+      data.speed += 2;
+    }
+  } else if (event.key === 'd') {
+    if (data.speed === 0) {
+      data.speed = 2;
+    } else {
+      data.speed -= 2;
+    }
   }
 }
 
 function moveCarForward() {
   if (data.direction === 'east') {
-    data.location.x += 8;
+    data.location.x += data.speed;
     $car.style.left = data.location.x + 'px';
   } else if (data.direction === 'west') {
-    data.location.x -= 8;
+    data.location.x -= data.speed;
     $car.style.left = data.location.x + 'px';
   } else if (data.direction === 'north') {
-    data.location.y -= 8;
+    data.location.y -= data.speed;
     $car.style.top = data.location.y + 'px';
   } else if (data.direction === 'south') {
-    data.location.y += 8;
+    data.location.y += data.speed;
     $car.style.top = data.location.y + 'px';
   }
 }
