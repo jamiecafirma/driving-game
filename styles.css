@@ -36,3 +36,9 @@ body {
 .south {
   transform: rotate(90deg);
 }
+
+.speedometer {
+  position: fixed;
+  right: 10px;
+  top: 10px;
+}
